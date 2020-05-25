@@ -76,8 +76,10 @@ Object.keys(filterOptions).forEach(option => {
 // update the sightings found count
 d3.select('.results-count').text(tableData.length)
 
+// initialize variable to store selected filters and values
 var filters = {}
 
+// add filter to `filters` variable
 function updateFilter() {
   if (this.value.includes('All ' + this.id)) {
     delete filters[this.name]
