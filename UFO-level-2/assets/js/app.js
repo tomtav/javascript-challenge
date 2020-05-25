@@ -97,11 +97,9 @@ function filterTable() {
 
   // generate new filtered dataset or use original dataset
   if (Object.keys(filters).length) {
-    viewData = tableData.filter(row => {
-      for (let filter in filters) {
-        return row[filter] === filters[filter]
-      }
-    });
+    viewData = tableData.filter(function (d) {
+      return Object.keys(this).every(key => d[key] === this[key]);
+    }, filters)
   } else {
     viewData = tableData;
   }
