@@ -84,7 +84,6 @@ function updateFilter() {
   } else {
     filters[this.name] = this.value
   }
-  console.log(filters)
   filterTable()
 }
 
@@ -93,17 +92,8 @@ function filterTable() {
   // prevent reloading of webpage
   d3.event.preventDefault()
 
-  // store filter value from dropdown
-  // let searchLabel = this.id
-  // let searchName = this.name
-  // let searchData = this.value;
-
-  // console.log(searchLabel)
-  // console.log(searchName)
-  // console.log(searchData)
-
   // array to store rows retrieved
-  let viewData = []
+  let viewData = [];
 
   // generate new filtered dataset or use original dataset
   if (Object.keys(filters).length) {
@@ -111,33 +101,32 @@ function filterTable() {
       for (let filter in filters) {
         return row[filter] === filters[filter]
       }
-    })
-    //row['datetime'] === searchData
+    });
   } else {
     viewData = tableData;
   }
 
   // update sightings found count
-  d3.select('.results-count').text(viewData.length)
+  d3.select('.results-count').text(viewData.length);
 
   // select table
-  tbody = d3.select('#ufo-table').select('tbody')
+  tbody = d3.select('#ufo-table').select('tbody');
 
   // update table
-  rows = tbody.selectAll('tr').data(viewData)
+  rows = tbody.selectAll('tr').data(viewData);
 
   columns = rows.enter()
     .append('tr')
     .merge(rows)
     .selectAll('td')
-    .data(row => Object.keys(row).map(key => ({ column: key, value: row[key] })))
+    .data(row => Object.keys(row).map(key => ({ column: key, value: row[key] })));
 
   columns
     .enter()
     .append('td')
     .attr("style", "font-family: Arial;")
     .merge(columns)
-    .html(column => column.value)
+    .html(column => column.value);
 
   // remove unnecessary table rows
   rows.exit().remove()
