@@ -39,7 +39,7 @@ var filter = d3.select('li.filter')
 
 // Add the initial option
 filter.append('option')
-  .text('Select a Date:')
+  .text('All Dates')
 
 // Add all dates as options to dropdown
 var options = filter.selectAll(null)
@@ -52,6 +52,9 @@ d3.select('.results-count').text(tableData.length)
 
 function filterTable() {
 
+  // prevent reloading of webpage
+  d3.event.preventDefault()
+
   // store filter value from dropdown
   let searchData = this.value;
 
@@ -59,7 +62,7 @@ function filterTable() {
   let viewData = []
 
   // generate new filtered dataset or use original dataset
-  if (searchData === 'Select a Date:') {
+  if (searchData === 'All Dates') {
     viewData = tableData;
   } else {
     viewData = tableData.filter(row => row['datetime'] === searchData)
