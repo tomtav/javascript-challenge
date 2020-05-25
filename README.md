@@ -10,6 +10,10 @@ Our collection is too large to search through manually. We created a web page on
 The planet Earth needs to know what we have found!
 
 ---
+## Final Web Pages
+  - [Date Filtering](https://tomtav.github.io/javascript-challenge/UFO-level-1)
+  - [Multi-Option Filtering](https://tomtav.github.io/javascript-challenge/UFO-level-2)
+---
 
 ## Resources
 1. [UFO dataset](UFO-level-1/assets/js/data.js) for each UFO sighting.
